@@ -11,7 +11,7 @@ const generateUnique = length =>
   Math.random().toString(36).substring(2, 2 + length)
 
 // Form items
-const hidden = (name, value) => {
+const hidden = ({ name, value }) => {
   return `<div class="c-form__item jsFormItem c-form__hidden-item">
     <input type="hidden" name="${name}" value="${value}">
   </div>`
@@ -140,15 +140,15 @@ const form = (content, options) => {
   >
     <noscript>(Hey, would you mind turning on JavaScript? This form doesn't work properly without it. I won't be able to see what you wrote). </noscript>
 
-    ${hidden('subject', options.subject)}
-    ${hidden('initial-message', options.initialMessage)}
+    ${hidden({ name: 'subject', value: options.subject })}
+    ${hidden({ name: 'initial-message', value: options.initialMessage })}
 
     ${content}
 
     ${input({
       label: "What's your name?",
       name: 'name',
-      placeholder: 'Your name',
+      placeholder: '',
       required: true
     })}
 
@@ -156,14 +156,14 @@ const form = (content, options) => {
       label: "What's your email address?",
       name: 'email',
       type: 'email',
-      placeholder: 'your-email@gmail.com',
+      placeholder: '',
       required: true
     })}
 
-    ${hidden('final-message', options.finalMessage)}
+    ${hidden({ name: 'final-message', subject: options.finalMessage })}
 
     <div class="c-form__item">
-      <button class="o-btn--secondary" type="submit">Send my answers</button>
+      <button class="button" data-type="secondary" type="submit">Send my answers</button>
     </div>
   </form>`
 }

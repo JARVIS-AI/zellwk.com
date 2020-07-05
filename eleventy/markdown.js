@@ -1,17 +1,27 @@
 const markdownIt = require('markdown-it')
-const markdownItContainer = require('markdown-it-container')
+const containerPlugin = require('markdown-it-container')
+const anchorPlugin = require('markdown-it-anchor')
+
 const lib = markdownIt({
   html: true,
   typographer: true
 })
-  .use(markdownItContainer)
+  .use(anchorPlugin)
+  .use(containerPlugin, 'note', {
+    render: function (tokens, idx) {
+      const tag = tokens[idx]
 
-// Trims whitespace from front and back of every line.
-// Allows markdown tag to be used with any indentation.
-// Note: Not useable with triple backticks that produce
-//   <pre><code></code></pre> blocks because the front of all lines are
-//   trimmed. Can write a better regex to prevent this from happening
-//   though. But maybe a later time.
+      // Opening tag
+      if (tag.info) return '<div class="note">'
+
+      // Closing tag
+      return '</div>'
+    }
+  })
+
+// Renders Markdown within pair.
+// Trims each line so markdown pair can be used with any indentiation.
+// *Does not work with code blocks*.
 const pairedMarkdown = content => {
   const formatted = content.split(/\n/)
     .map(c => c.trim())
@@ -19,10 +29,25 @@ const pairedMarkdown = content => {
   return lib.render(formatted)
 }
 
-const inline = content => content ? lib.renderInline(content) : content
+// Renders markdown file
+// Must include path to markdown file within pair.
+// Works with code blocks
+const includeMarkdownFile = content => {
+  const array = content.split(/\n/)
+  // Trims the first line (so users don't have ensure they strip new lines in Nunjucks)
+  array[1] = array[1].trim()
+
+  const formatted = array.join('\n')
+  return lib.render(formatted)
+}
+
+const inline = content => {
+  return content ? lib.renderInline(content) : content
+}
 
 module.exports = {
-  lib: lib,
+  lib,
+  includeMarkdownFile,
   pairedMarkdown,
   inline
 }

@@ -13,7 +13,7 @@ import { redirect, readyModal, LaunchModal } from './modal'
 
 // const beforeCloneText = (cloneLocation) => {
 //   const p = document.createElement('p')
-//   const text = `(Before we move on, here’s a quick signup form if you'd like to read similar articles from me every Wednesday).`
+//   const text = '(Before we move on, here’s a quick signup form if you\'d like to read similar articles from me every Wednesday).'
 //   p.innerHTML = cloneLocation.dataset.text || text
 //   return p
 // }
@@ -59,7 +59,7 @@ const listenForSuccess = target => {
       if (ckForm.dataset.redirect) {
         redirect(ckForm.dataset.redirect)
       } else {
-        redirect('/thanks')
+        redirect('/bonus')
       }
     })
   })
@@ -70,7 +70,7 @@ const ckForms = Array.from(document.querySelectorAll('.jsCkForm'))
 if (ckForms.length) {
   window.addEventListener('load', e => {
     ckForms.forEach(formContainer => {
-      let form = formContainer.querySelector('.ck_subscribe_form')
+      const form = formContainer.querySelector('.ck_subscribe_form')
       form.addEventListener('submit', handleCkSubmit)
     })
   })

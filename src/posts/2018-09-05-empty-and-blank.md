@@ -10,8 +10,7 @@ description: "How to use the :empty selector and the :blank selector"
 
 I made a terrible mistake when I tweeted about `:empty` and `:blank` a month ago. I said that `:empty` wasn't useful, and `:blank` is much more useful than `:empty`.
 
-<figure>
-  <img src="/images/2018/empty-and-blank/tweet.png" alt="Blank is not supported by any browser">
+<figure><img src="/images/2018/empty-and-blank/tweet.png" alt="Blank is not supported by any browser">
 </figure>
 
 I was wrong!
@@ -151,7 +150,7 @@ I felt `:empty` isn't good enough because of two reasons:
 
 The first reason is valid, but it isn't a big deal.
 
-~~**The second reason is not valid**. I assumed I had to trim whitespaces, but I don't need to.~~
+**The second reason is not valid**. I assumed I had to trim whitespaces, but I don't need to.
 
 EDIT: The second reason is valid too! I have no idea why my tests went haywire when writing this article. I found out about it thanks to Daniel and Konrud5 (below).
 
@@ -187,7 +186,7 @@ But then again, it's a small problem for a big benefit.
 
 ### You need to trim whitespaces manually with JavaScript
 
-~~I say it again. **You don't need to trim whitespaces manually in JavaScript** if you use `:empty`. I made a wrong assumption.~~
+I say it again. **You don't need to trim whitespaces manually in JavaScript** if you use `:empty`. I made a wrong assumption.
 
 You need to trim whitespace manually in JavaScript if you want to use `:empty`.
 
@@ -221,8 +220,7 @@ const li = ul.children[0]
 
 ul.removeChild(li)
 
-if (ul.children.length
- - = 0) {
+if (ul.children.length === 0) {
   ul.innerHTML = ''
 }
 ```
@@ -236,13 +234,11 @@ Here's the code for this example:
 
 `:empty` supported on all browsers, and `:blank` has poor browser support. This gives you plenty of reason to use `:empty` over `:blank` today!
 
-<figure>
-  <img src="/images/2018/empty-and-blank/empty-browser-support.png" alt="Empty supported by every browser">
+<figure><img src="/images/2018/empty-and-blank/empty-browser-support.png" alt="Empty supported by every browser">
   <figcaption>:empty browser support</figcaption>
 </figure>
 
-<figure>
-  <img src="/images/2018/empty-and-blank/blank-browser-support.png" alt="Blank is not supported by any browser">
+<figure><img src="/images/2018/empty-and-blank/blank-browser-support.png" alt="Blank is not supported by any browser">
   <figcaption>:blank browser support (from CSS Tricks)</figcaption>
 </figure>
 

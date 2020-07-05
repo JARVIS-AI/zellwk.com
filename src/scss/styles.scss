@@ -35,7 +35,6 @@
 @import "objects/input";
 @import "objects/buttons";
 @import "objects/loader";
-@import "objects/featured";
 @import "objects/text-tab";
 @import "objects/book";
 @import "objects/course";
@@ -58,59 +57,24 @@
 @import "components/offsite";
 @import "components/prism";
 @import "components/home";
+@import "components/media";
+@import "components/note";
 
 // Utils
 // -----
 @import "utils";
 
 // Shame
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
+table {
+  border-collapse: collapse;
 
-  figcaption {
-    margin-top: vr(0.25);
-  }
-}
-
-.youtube {
-  width: 100%;
-  border: 0;
-  height: vr(17.5);
-}
-
-.home-page main {
-  margin-top: 0;
-}
-
-.home-page .c-footer {
-  margin-top: 0;
-}
-
-.c-footer__nav {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: vr(0.75);
-
-  // Nav headers
-  li > span {
-    @include tp-sans2;
-    font-weight: 600;
-    color: #333;
+  th {
+    text-align: left;
   }
 
-  // Separator betwene header and content
-  span + ol {
-    margin-top: vr(0.25);
-  }
-
-  li li {
-    line-height: 1.2;
-  }
-
-  li li a {
-    @include tp-sans2;
-    font-weight: 400;
+  th,
+  td {
+    border: 1px solid black;
+    padding: 0.25em;
   }
 }

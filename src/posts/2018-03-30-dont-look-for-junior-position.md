@@ -3,7 +3,7 @@ title: Job search protip—don't look for a junior position
 layout: post
 slug: dont-look-for-a-junior-position
 newsletter: better-fed
-video: Lr312DGmPWQ
+youtubeHash: Lr312DGmPWQ
 tags:
  - video
  - mindset
@@ -24,7 +24,7 @@ This advice may sound counterintuitive. How can you become a frontend developer 
 
 To answer this question, you want to consider what you want and what the company want when you look for a job.
 
-## What you want vs what companies what.
+## What you want vs what companies want.
 
 When you look for a junior role, what you want is to:
 

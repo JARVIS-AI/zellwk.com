@@ -11,8 +11,7 @@ This is the start of a three-part lesson about building a calculator. By the end
 
 Here's what you'll get:
 
-<figure>
-  <img src="/images/2018/calculator-1/calculator.gif" alt="GIF of a calculator you'll build">
+<figure><img src="/images/2018/calculator-1/calculator.gif" alt="GIF of a calculator you'll build">
   <figcaption aria-hidden>GIF of a calculator you'll build</figcaption>
 </figure>
 
@@ -46,8 +45,7 @@ First, we want to build the calculator.
 
 The calculator consist of two parts. The display and the keys.
 
-<figure>
-  <img src="/images/2018/calculator-1/display-and-keys.png" alt="Squares that label the calculator's display and keys">
+<figure><img src="/images/2018/calculator-1/display-and-keys.png" alt="Squares that label the calculator's display and keys">
   <figcaption>Calculators have a display and several keys</figcaption>
 </figure>
 
@@ -133,14 +131,10 @@ If the key has a `data-action` that is either `add`, `subtract`, `multiply` or `
 
 ```js
 if (
-  action
- - = 'add' ||
-  action
- - = 'subtract' ||
-  action
- - = 'multiply' ||
-  action
- - = 'divide'
+  action === 'add' ||
+  action === 'subtract' ||
+  action === 'multiply' ||
+  action === 'divide'
 ) {
   console.log('operator key!')
 }
@@ -149,26 +143,22 @@ if (
 If the key's `data-action` is `decimal`, we know the user clicked on the decimal key. Following the same thought process, if the key's `data-action` is `clear`, we know the user clicked on the clear (the one that says AC) key; if the key's `data-action` is `calculate`, we know the user clicked on the equal key.
 
 ```js
-if (action
- - = 'decimal') {
+if (action === 'decimal') {
   console.log('decimal key!')
 }
 
-if (action
- - = 'clear') {
+if (action === 'clear') {
   console.log('clear key!')
 }
 
-if (action
- - = 'calculate') {
+if (action === 'calculate') {
   console.log('equal key!')
 }
 ```
 
 At this point, you should get a `console.log` response from every calculator key.
 
-<figure>
-  <img src="/images/2018/calculator-1/click-key.gif" alt="We're now able to detect different types of keys">
+<figure><img src="/images/2018/calculator-1/click-key.gif" alt="We're now able to detect different types of keys">
   <figcaption aria-hidden>We're now able to detect different types of keys</figcaption>
 </figure>
 
@@ -176,7 +166,7 @@ At this point, you should get a `console.log` response from every calculator key
 
 ## Building the happy path
 
-When a user picks up the calculator, they can any of these five types of keys:
+When a user picks up the calculator, they can click on any of these five types of keys:
 
 1. a number key (0-9)
 2. an operator key (+, -, &times;, ÷)
@@ -188,21 +178,19 @@ It can be overwhelming to consider five types of keys at once, so let's take it 
 
 Let's call our normal person Mary.
 
-When Mary picks up a calculator, she'll probably hit a number key.
+When Mary picks up a calculator, she'll probably hit a number key at first.
 
 ## When a user hits a number key
 
 At this point, if the calculator shows 0 (the default number), the target number should replace zero.
 
-<figure>
-  <img src="/images/2018/calculator-1/num-zero.gif" alt="Calculator replaces 0 with 9">
+<figure><img src="/images/2018/calculator-1/num-zero.gif" alt="Calculator replaces 0 with 9">
   <figcaption aria-hidden>Calculator replaces 0 with 9</figcaption>
 </figure>
 
 If the calculator shows a non-zero number, the target number should be appended to the displayed number.
 
-<figure>
-  <img src="/images/2018/calculator-1/num-non-zero.gif" alt="Calculator appends 5 to 9">
+<figure><img src="/images/2018/calculator-1/num-non-zero.gif" alt="Calculator appends 5 to 9">
   <figcaption aria-hidden>Calculator appends 5 to 9</figcaption>
 </figure>
 
@@ -227,12 +215,11 @@ keys.addEventListener('click', e => {
 })
 ```
 
-**If the calculator shows 0, we want to replace the calculator's display with the clicked key.** We can do so by replacing the display's textContent property.
+**If the calculator shows 0, we want to replace the calculator's display with the textContent of the clicked key.** We can do so by replacing the display's textContent property.
 
 ```js
 if (!action) {
-  if (displayedNum
- - = '0') {
+  if (displayedNum === '0') {
     display.textContent = keyContent
   }
 }
@@ -242,8 +229,7 @@ if (!action) {
 
 ```js
 if (!action) {
-  if (displayedNum
- - = '0') {
+  if (displayedNum === '0') {
     display.textContent = keyContent
   } else {
     display.textContent = displayedNum + keyContent
@@ -262,16 +248,14 @@ Let's say Mary hits the decimal key.
 
 When Mary hits the decimal key, a decimal should appear on the display. If Mary hits any number after hitting a decimal key, the number should be appended on the display as well.
 
-<figure>
-  <img src="/images/2018/calculator-1/decimal-non-zero.gif" alt="Calculator adds a decimal, followed by a number, to the display">
+<figure><img src="/images/2018/calculator-1/decimal-non-zero.gif" alt="Calculator adds a decimal, followed by a number, to the display">
   <figcaption aria-hidden>Calculator adds a decimal, followed by a number, to the display</figcaption>
 </figure>
 
 To create this effect, we can concatenate `.` to the displayed number.
 
 ```js
-if (action
- - = 'decimal') {
+if (action === 'decimal') {
   display.textContent = displayedNum + '.'
 }
 ```
@@ -282,8 +266,7 @@ Next, let's say Mary continues her calculation by hitting an operator key.
 
 If Mary hits an operator key, the operator should be highlighted so Mary knows the operator is active.
 
-<figure>
-  <img src="/images/2018/calculator-1/operator.gif" alt="Operator keys should be depressed when they're clicked on">
+<figure><img src="/images/2018/calculator-1/operator.gif" alt="Operator keys should be depressed when they're clicked on">
   <figcaption aria-hidden>Operator keys should be depressed when they're clicked on</figcaption>
 </figure>
 
@@ -291,14 +274,10 @@ To do so, we can add the `is-depressed` class to the operator key.
 
 ```js
 if (
-  action
- - = 'add' ||
-  action
- - = 'subtract' ||
-  action
- - = 'multiply' ||
-  action
- - = 'divide'
+  action === 'add' ||
+  action === 'subtract' ||
+  action === 'multiply' ||
+  action === 'divide'
 ) {
   key.classList.add('is-depressed')
 }
@@ -310,8 +289,7 @@ Once Mary has hit an operator key, she'll hit another number key.
 
 When Mary hits a number key again, the previous display should be replaced with the new number. The operator key should also release it's pressed state.
 
-<figure>
-  <img src="/images/2018/calculator-1/num-after-operator.gif" alt="Display replaced by a new number">
+<figure><img src="/images/2018/calculator-1/num-after-operator.gif" alt="Display replaced by a new number">
   <figcaption aria-hidden>Display replaced by a new number</figcaption>
 </figure>
 
@@ -343,14 +321,10 @@ keys.addEventListener('click', e => {
     // ...
 
     if (
-      action
- - = 'add' ||
-      action
- - = 'subtract' ||
-      action
- - = 'multiply' ||
-      action
- - = 'divide'
+      action === 'add' ||
+      action === 'subtract' ||
+      action === 'multiply' ||
+      action === 'divide'
     ) {
       key.classList.add('is-depressed')
       // Add custom attribute
@@ -366,9 +340,7 @@ If the `previousKeyType` is an operator, we want to replace the displayed number
 const previousKeyType = calculator.dataset.previousKeyType
 
 if (!action) {
-  if (displayedNum
- - = '0' || previousKeyType
- - = 'operator') {
+  if (displayedNum === '0' || previousKeyType === 'operator') {
     display.textContent = keyContent
   } else {
     display.textContent = displayedNum + keyContent
@@ -388,35 +360,29 @@ When Mary hits the equal key, the calculator should calculate a result that depe
 
 After the calculation, the result should replace the displayed value.
 
-<figure>
-  <img src="/images/2018/calculator-1/equal.gif" alt="Calculates the correct value">
+<figure><img src="/images/2018/calculator-1/equal.gif" alt="Calculates the correct value">
   <figcaption aria-hidden>Calculates the correct value</figcaption>
 </figure>
 
 At this point, we only know the *second number*—the currently displayed number.
 
 ```js
-if (action
- - = 'calculate') {
+if (action === 'calculate') {
   const secondValue = displayedNum
   // ...
 }
 ```
 
-To get the *first number*, we need to store the calculator's displayed value before we wiped it clean. One way to save this first number is to add it to a custom attribute when the operator button gets clicked.
+To get the *first number*, we need to store the calculator's displayed value before we erase it. One way to save this first number is to add it to a custom attribute when the operator button gets clicked.
 
 To get the *operator*, we can also use the same technique.
 
 ```js
 if (
-  action
- - = 'add' ||
-  action
- - = 'subtract' ||
-  action
- - = 'multiply' ||
-  action
- - = 'divide'
+  action === 'add' ||
+  action === 'subtract' ||
+  action === 'multiply' ||
+  action === 'divide'
 ) {
   // ...
   calculator.dataset.firstValue = displayedNum
@@ -427,8 +393,7 @@ if (
 Once we have the three values we need, we can perform a calculation. Eventually, we want code to look something like this:
 
 ```js
-if (action
- - = 'calculate') {
+if (action === 'calculate') {
   const firstValue = calculator.dataset.firstValue
   const operator = calculator.dataset.operator
   const secondValue = displayedNum
@@ -451,17 +416,13 @@ If the operator is `add`, we want to add values together; if the operator is `su
 const calculate = (n1, operator, n2) => {
   let result = ''
 
-  if (operator
- - = 'add') {
+  if (operator === 'add') {
     result = n1 + n2
-  } else if (operator
- - = 'subtract') {
+  } else if (operator === 'subtract') {
     result = n1 - n2
-  } else if (operator
- - = 'multiply') {
+  } else if (operator === 'multiply') {
     result = n1 * n2
-  } else if (operator
- - = 'divide') {
+  } else if (operator === 'divide') {
     result = n1 / n2
   }
 
@@ -482,17 +443,13 @@ For a calculator, we need a float.
 const calculate = (n1, operator, n2) => {
   let result = ''
 
-  if (operator
- - = 'add') {
+  if (operator === 'add') {
     result = parseFloat(n1) + parseFloat(n2)
-  } else if (operator
- - = 'subtract') {
+  } else if (operator === 'subtract') {
     result = parseFloat(n1) - parseFloat(n2)
-  } else if (operator
- - = 'multiply') {
+  } else if (operator === 'multiply') {
     result = parseFloat(n1) * parseFloat(n2)
-  } else if (operator
- - = 'divide') {
+  } else if (operator === 'divide') {
     result = parseFloat(n1) / parseFloat(n2)
   }
 
@@ -506,6 +463,6 @@ That's it; we're done constructing the happy path! 😄
 
 But we're not done building the calculator yet. This is because users tend to veer away from happy paths in reality.
 
-So, when you any application, you want to make sure you cater for common edge cases that may happen. You'll learn how to do this in the next lesson.
+So, when you any application, you want to make sure you cater for common edge cases that may happen. You'll learn how to do this in the [next lesson](/blog/calculator-part-2).
 
 I hope you enjoyed this article. If you did, you'll want to check out [Learn JavaScript](https://learnjavascript.today)—a course to help you learn JavaScript once and for all.

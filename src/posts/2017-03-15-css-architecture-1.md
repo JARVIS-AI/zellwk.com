@@ -280,10 +280,10 @@ In the situation above, you can easily break `.comments__comment` down into `.co
 <section class="comments">
   <h2 class="comments__title"></h2>
   <article class="comment">
-    <h3 class="comment-title"></h3>
+    <h3 class="comment__title"></h3>
   </article>
   <article class="comment">
-    <h3 class="comment-title"></h3>
+    <h3 class="comment__title"></h3>
   </article>
   <!-- ... -->
 </section>
@@ -343,8 +343,7 @@ Next, there's one more thing I add to BEM for my use case — containers.
 
 Sometimes (many, actually), I run into situations where I had to bleed the background color of a section while ensuring everything else is aligned, like this:
 
-<figure>
-  <img src="/images/2017/css-architecture/container.png" alt="Image of a block that contains a background that bleeds out of it">
+<figure><img src="/images/2017/css-architecture/container.png" alt="Image of a block that contains a background that bleeds out of it">
   <figcaption>The greyish background bleeds out of alignment</figcaption>
 </figure>
 

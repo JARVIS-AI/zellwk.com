@@ -51,7 +51,6 @@ This approach uses `max-width` media queries.
 Here's a quick example:
 
 ~~~scss
-// This applies from 600px onwards
 body {
   background: green;
 }
@@ -144,7 +143,7 @@ Say these spaces each take up 5% of the width:
 .gallery__item {
   float: left;
   width: 30%;
-  margin-right 5%;
+  margin-right: 5%;
   margin-bottom: 5%;
 }
 ~~~
@@ -155,7 +154,7 @@ We will also have to give the final (3rd item) on the row a `margin-right` of 0 
 .gallery__item {
   float: left;
   width: 30%;
-  margin-right 5%;
+  margin-right: 5%;
   margin-bottom: 5%;
   &:nth-child(3n) {
     margin-right: 0;
@@ -169,7 +168,7 @@ This code must also work for the case where there are four items in the row. If 
 .gallery__item {
   float: left;
   width: 30%;
-  margin-right 5%;
+  margin-right: 5%;
   margin-bottom: 5%;
   &:nth-child(3n) {
     margin-right: 0;
@@ -272,7 +271,7 @@ Now imagine if you have a larger viewport and you wanted to show 5 items per row
 
 ## A Video!
 
-The guys over at [Webucator](https://www.webucator.com/mobile-training/mobile-web-development.cfm) were extremely kind and volunteered to create a video to summarize this blog post. So if video are your thing, do check this out.
+The guys over at [Webucator](https://www.webucator.com/mobile-training/mobile-web-development.cfm) were extremely kind and volunteered to create a video to summarize this blog post. So if videos are your thing, do check this out.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LCveWtlvSbM" frameborder="0" allowfullscreen></iframe>
 

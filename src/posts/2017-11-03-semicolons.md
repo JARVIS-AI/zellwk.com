@@ -3,11 +3,11 @@ title: Should you use semicolons in JavaScript?
 layout: post
 slug: semicolons
 newsletter: jsr
-video: TODFjRDfosk
+youtubeHash: TODFjRDfosk
 tags:
  - javascript
  - video
-shareText: It doesn't matter whether you use semi-colons or not in your JavaScript. You can write good code either way.
+shareText: "It doesn't matter whether you use semi-colons or not in your JavaScript. You can write good code either way."
 ---
 
 I promised I'd start making videos last week, didn't I? Well, here's the first video! Today, I'd like to talk about semicolons.

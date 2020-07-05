@@ -1,60 +1,25 @@
-@import 'reset';
-
-// ======================================
-// # Layouts for Convertkit form
-// ======================================
-
-@mixin l-ck--standard {
-  margin: vr(2) 0 vr(2) -25vw;
-  padding: vr(2.5) vr(3.5) vr(2.5) 25vw;
-
-  &:last-child { margin-bottom: 0; }
-
-  @include bp(max large) {
-    margin-right: vr(-0.75);
-    padding-right: vr(1);
-  }
-
-  .ck_form {
-    @include bp(large) { margin-left: vr(3.75); }
-  }
-
-  .ck_form_content p,
-  .ck_description > div,
-  .ck_subscribe_form {
-    @include bp(med) { margin-right: vr(2.25); }
-    @include bp(large) { margin-right: vr(6); }
-  }
-
-  // Fucked up hack because CK creates some divs instead of p
-  .ck_description > div {
-    margin-top: vr(0.75);
-  }
-}
-
-// CK Form in post and articles
-// Extra specificity required to overwrite props
-// when l-ck--standard is used directly in l-post__content
-.l-ck--standard,
-.l-post__content.l-post__content .l-ck--standard {
-  @include l-ck--standard;
-}
-
-// === End Layouts for Convertkit form
-
+@import "reset";
 // ======================================
 // # Convertkit Form styles
 // ======================================
 
 .c-ck {
-  border-top: vr(0.25) solid var(--theme-color);
-  background-color: color(alabaster);
+  // border-top: vr(0.25) solid var(--theme-color);
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+
+  p + *,
+  * + p {
+    margin-top: 1em;
+  }
 }
 
 // CK Form styles
 .ck_form.ck_form.ck_form {
   background-color: transparent;
-  .ck_powered_by { display: none; }
+  .ck_powered_by {
+    display: none;
+  }
 }
 
 .ck_form.ck_form .ck_form_content {
@@ -62,21 +27,22 @@
   h3 {
     color: color(mine);
     @include tp-text2;
-    font-feature-settings: 'liga' 1;
+    font-feature-settings: "liga" 1;
+    margin-bottom: vr(0.75);
   }
 
-  // Allow ck image to float left and push words to right.
-  // Works only for books. Not courses, so not ideal.
-  // Might need a JS Solution. Have to think about it in future.
   .ck_image {
-    margin: 0;
-    float: none;
-  }
+    all: unset;
+    display: block;
 
-  .ck_image > * {
-    margin-top: vr(0.25);
-    margin-right: vr(0.75);
-    float: left;
+    > * {
+      all: unset;
+      margin-bottom: 1rem;
+      @include mappy-bp(med) {
+        float: left;
+        margin-right: 2rem;
+      }
+    }
   }
 }
 
@@ -117,7 +83,7 @@
   }
 
   button {
-    @include o-btn--secondary;
+    @include secondary-button;
     justify-self: flex-start;
     grid-column: span 2;
   }
@@ -132,3 +98,70 @@
 }
 
 // === End Convertkit Form styles
+
+// ======================================
+// # Layouts for Convertkit form
+// ======================================
+.ck-layout {
+  grid-column: 2 / -1;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 50ch)
+    minmax(0, 1fr);
+  grid-template-columns: subgrid;
+  grid-gap: inherit;
+
+  margin: vr(2) 0 vr(0.75) -25vw;
+  padding: vr(2.5) vr(3.5) vr(2.5) 25vw;
+
+  @include mappy-bp(max large) {
+    margin-right: vr(-0.75);
+    padding-right: vr(0.75);
+  }
+
+  > * {
+    grid-column-gap: 1;
+  }
+}
+
+// TODO: Remove other instances of .l-ck--standard
+@mixin l-ck--standard {
+  margin: vr(2) 0 vr(2) -25vw;
+  padding: vr(2.5) vr(3.5) vr(2.5) 25vw;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include bp(max large) {
+    margin-right: vr(-0.75);
+    padding-right: vr(1);
+  }
+
+  .ck_form {
+    @include bp(large) {
+      margin-left: vr(3.75);
+    }
+  }
+
+  .ck_form_content p,
+  .ck_subscribe_form {
+    @include bp(med) {
+      margin-right: vr(2.25);
+    }
+    @include bp(large) {
+      margin-right: vr(6);
+    }
+  }
+}
+
+// CK Form in post and articles
+// Extra specificity required to overwrite props
+// when l-ck--standard is used directly in l-post__content
+.l-ck--standard,
+.l-post__content.l-post__content .l-ck--standard {
+  @include l-ck--standard;
+}
+
+// === End Layouts for Convertkit form
